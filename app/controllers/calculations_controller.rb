@@ -24,9 +24,34 @@ class CalculationsController < ApplicationController
     render("calculations/square_form.html.erb")
   end
   def square
-    @the_number = params[:user_number].to_f
+    @num = params[:num].to_f
     render("calculations/square.html.erb")
   end
-end
+  def sqrt_form
+    render("calculations/sqrt_form.html.erb")
+  end
+  def sqrt
+    @num = params[:num].to_f
+    render("calculations/sqrt.html.erb")
+  end
 
+  def pmt_form
+    render("calculations/pmt_form.html.erb")
+  end
+  def pmt
+    @principal = params["pri"].to_f
+    @apr = params["apr"].to_f
+    @years = params["yrs"].to_f
+    @payment = @principal*((@apr/100/12)*(1+(@apr/100/12))**(@years*12))/(((1+(@apr/100/12))**(@years*12))-1)
+    render("calculations/pmt.html.erb")
+  end
+  def ran_form
+    render("calculations/ran_form.html.erb")
+  end
+  def ran
+    @lo = params["min"].to_f
+    @hi = params["max"].to_f
+    @rand = @lo + rand(@hi - @lo + 1)
+    render("calculations/ran.html.erb")
+  end
 end

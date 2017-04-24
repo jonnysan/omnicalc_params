@@ -1,1 +1,1 @@
-<h1>For a loan of <%=number_to_currency(@principal)%> at <%=@apr%>% for <%=@years%> years, your payment is <%=number_to_currency(@payment)%></h1>
+<h1>For a loan of <%=number_to_currency(@principal)%> at <%=number_to_percentage(@apr, precision: 2)%> for <%=@years%> years, your payment is <%=number_to_currency(@payment)%></h1>
